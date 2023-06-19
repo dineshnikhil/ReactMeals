@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Cart.module.css';
+import Model from '../UI/Model';
 
 function Cart() {
 	const cartItems = (
@@ -18,16 +19,17 @@ function Cart() {
 	);
 
 	return (
-		<div>
+		<Model>
+			{cartItems}
 			<div className={classes.total}>
 				<span>Total Amount</span>
 				<span>36.33</span>
 			</div>
 			<div className={classes.actions}>
 				<button className={classes['button--alt']}>Close</button>
-				<button></button>
+				<button className={classes.button}>Order</button>
 			</div>
-		</div>
+		</Model>
 	);
 }
 
