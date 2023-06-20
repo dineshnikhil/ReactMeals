@@ -3,8 +3,8 @@ import classes from './Model.module.css';
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-function Backdrop() {
-	return <div className={classes.backdrop}></div>;
+function Backdrop({ onHideCart }) {
+	return <div className={classes.backdrop} onClick={onHideCart}></div>;
 }
 
 function Modeloverlay({ children }) {
@@ -17,10 +17,13 @@ function Modeloverlay({ children }) {
 
 const protalElement = document.getElementById('overlays');
 
-function Model({ children }) {
+function Model({ children, onHideCart }) {
 	return (
 		<Fragment>
-			{ReactDOM.createPortal(<Backdrop />, protalElement)}
+			{ReactDOM.createPortal(
+				<Backdrop onHideCart={onHideCart} />,
+				protalElement
+			)}
 			{ReactDOM.createPortal(
 				<Modeloverlay>{children}</Modeloverlay>,
 				protalElement

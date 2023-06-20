@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Cart.module.css';
 import Model from '../UI/Model';
 
-function Cart() {
+function Cart({ onHideCart }) {
 	const cartItems = (
 		<ul className={classes['cart-items']}>
 			{[
@@ -19,14 +19,16 @@ function Cart() {
 	);
 
 	return (
-		<Model>
+		<Model onHideCart={onHideCart}>
 			{cartItems}
 			<div className={classes.total}>
 				<span>Total Amount</span>
 				<span>36.33</span>
 			</div>
 			<div className={classes.actions}>
-				<button className={classes['button--alt']}>Close</button>
+				<button className={classes['button--alt']} onClick={onHideCart}>
+					Close
+				</button>
 				<button className={classes.button}>Order</button>
 			</div>
 		</Model>
